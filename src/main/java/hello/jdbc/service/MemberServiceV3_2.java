@@ -27,9 +27,8 @@ public class MemberServiceV3_2 {
     public void accountTransfer(String fromId, String toId, int money) throws SQLException {
 
         txTemplate.executeWithoutResult((status) -> {
-            Member fromMember = null;
             try {
-                fromMember = memberRepository.findById(fromId);
+                Member fromMember = memberRepository.findById(fromId);
                 Member toMember = memberRepository.findById(toId);
 
                 memberRepository.update(fromId, fromMember.getMoney() - money);
